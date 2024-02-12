@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .container1 {
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+        button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+
+
+
+    </style>
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">JoyBoi</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cheerup.html">Cheer Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="journal.html">Journal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div>
+        <h1>Home</h1>
+        <p>This page will contain games like quiz and riddles which may help boosting users confidence. <br>(Please visit all the navigations above.)</p>
+      </div>
+
+      <div class="container">
+        <h1>Riddle App</h1>
+        <div class="question" id="questionContainer">
+            <h2>Question 1</h2>
+            <p>What has keys but can't open locks?</p>
+            <p>Difficulty: 25% were able to solve this question.</p>
+        </div>
+        <form id="answerForm">
+            <label for="answer">Your Answer:</label>
+            <input type="text" id="answer" name="answer" required><br>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="feedback" style="display: none;"></div>
+    </div>
+
+    <div class="container1" id="taskContainer">
+        <h1>Daily Lifestyle Tasks</h1>
+        <p>Here's your task for today:</p>
+        <p id="task">Try helping someone in need.</p>
+        <button id="newTaskBtn">Get New Task</button>
+    </div>
+
+    <script>
+
+
+var tasks = [
+        "Try helping someone in need.",
+        "Compliment a stranger.",
+        "Donate unused items to charity.",
+        "Spend quality time with a loved one.",
+        "Practice gratitude by listing things you're thankful for.",
+        "Learn something new today.",
+        "Go for a walk and appreciate nature.",
+        "Volunteer your time for a cause you believe in.",
+        "Cook a healthy meal for yourself.",
+        "Take a break from screens and read a book."
+    ];
+
+    // Function to get a random task
+    function getRandomTask() {
+        var randomIndex = Math.floor(Math.random() * tasks.length);
+        return tasks[randomIndex];
+    }
+
+    // Display initial task
+    document.getElementById("task").textContent = getRandomTask();
+
+    // Event listener for the "Get New Task" button
+    document.getElementById("newTaskBtn").addEventListener("click", function() {
+        document.getElementById("task").textContent = getRandomTask();
+    });
+
+
+        document.getElementById("answerForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var answer = document.getElementById("answer").value.toLowerCase();
+            var feedbackContainer = document.getElementById("feedback");
+            
+            // Check answer
+            var correctAnswer = "piano";
+            if (answer === correctAnswer) {
+                feedbackContainer.style.display = "block";
+                feedbackContainer.innerHTML = "<p>Correct!</p>";
+            } else {
+                feedbackContainer.style.display = "block";
+                feedbackContainer.innerHTML = "<p>Incorrect. Try again!</p>";
+            }
+        });
+    </script>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+  </body>
+
+
+ 
+</html>

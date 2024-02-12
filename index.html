@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account creation</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"], input[type="number"], select {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+    
+    <h1>Account Creation</h1>
+
+<form id="myForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required><br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+    </select><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<div id="message" style="display: none;">
+    <h2>Congratulations!</h2>
+    <p id="description"></p>
+    <p>(i need more inputs which tells us about the user based on which we can provide a short description on user's personality for ex: snapchat gives description based on birthdate and zodiac signs. )</p>
+    <a href="home.html">Click to Visit next page</a>
+</div>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var name = document.getElementById("name").value;
+        var age = document.getElementById("age").value;
+        var gender = document.getElementById("gender").value;
+        
+        // Saving name in a variable for later use
+        localStorage.setItem("savedName", name);
+
+        // Display congratulatory message
+        document.getElementById("message").style.display = "block";
+        document.getElementById("description").innerText = "Hello " + name + "! You are " + age + " years old and identify as " + gender + ".";
+    });
+</script>
+
+</body>
+</html>
